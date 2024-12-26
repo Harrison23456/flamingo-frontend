@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { EliminarEmpresaComponent } from './eliminar-empresa.component';
+
+describe('EliminarEmpresaComponent', () => {
+  let component: EliminarEmpresaComponent;
+  let fixture: ComponentFixture<EliminarEmpresaComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [EliminarEmpresaComponent]
+    })
+    .compileComponents();
+    
+    fixture = TestBed.createComponent(EliminarEmpresaComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

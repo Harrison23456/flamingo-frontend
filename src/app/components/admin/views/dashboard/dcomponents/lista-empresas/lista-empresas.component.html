@@ -1,0 +1,58 @@
+  <div class="container">
+
+    <div class="space-between">
+        <mat-form-field appearance="fill" style="width: 200px;" class="space-between">
+            <mat-label>Buscar</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Buscar por nombre, RUC o dirección">
+          </mat-form-field>
+        <button mat-fab extended color="primary" (click)="openCreateDialog()">Crear Empresa</button>
+
+    </div>
+
+
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+      <!-- Columnas de la tabla -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="ruc">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> RUC </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.ruc }} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="address">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Dirección </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.address }} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Licencia </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.licencia }} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+        <mat-cell *matCellDef="let element" [ngClass]="{'disabled-row': !element.status}">
+          <mat-slide-toggle [checked]="element.status" (change)="openToggleConfirmDialog(element)">
+          </mat-slide-toggle>
+          <button mat-icon-button color="accent" (click)="openEditDialog(element)" [disabled]="isDisabled(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  
+    <!-- Paginación -->
+    <mat-paginator [length]="dataSource.data.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" (page)="onPaginateChange($event)">
+    </mat-paginator>
+  </div>

@@ -1,0 +1,56 @@
+  <div class="container">
+    <div class="space-between">
+      <mat-form-field appearance="fill" style="width: 200px;" class="space-between">
+        <mat-label>Buscar Usuario</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Buscar por nombre o email" />
+      </mat-form-field>
+      <button mat-fab extended color="primary" (click)="openCreateDialog()">Crear Usuario</button>
+    </div>
+  
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+        </ng-container>
+        
+  
+      <ng-container matColumnDef="paternalsurname">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.paternalsurname }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="userweb">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Email Web </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.userweb }} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="usermobile">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Email Móvil </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.usermobile }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="company">
+        <mat-header-cell *matHeaderCellDef> Empresa </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          {{ element.company }}
+        </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-icon-button color="primary" (click)="openEditDialog(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteUser(element._id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  
+    <mat-paginator [length]="dataSource.data.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+  </div>

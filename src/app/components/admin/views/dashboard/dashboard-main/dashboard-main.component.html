@@ -1,0 +1,21 @@
+
+<div class="mat-typography">
+    <mat-toolbar color="primary">
+      <!-- Opciones del menú -->
+      <span style="flex-grow: 1;">
+        <button mat-button routerLink="/clientes">CLIENTES</button>
+        <button mat-button routerLink="/salas-juego">SALAS DE JUEGO</button>
+        <button mat-button routerLink="/dashboard/EmpresasList">EMPRESA</button>
+        <button mat-button routerLink="/dashboard/UsuariosList">USUARIOS</button>
+        <button mat-button routerLink="/reporteria">REPORTERÍA</button>
+      </span>
+  
+      <!-- Logout -->
+      <button mat-button (click)="onLogout()">LOGOUT</button>
+    </mat-toolbar>
+  
+    <div class="dashboard-content" style="padding: 16px;" *ngIf="hasAccess">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  

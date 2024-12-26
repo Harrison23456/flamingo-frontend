@@ -1,0 +1,8 @@
+.disabled-row {
+    background-color: #f5f5f5; /* Gris claro */
+    color: #aaa; /* Gris más claro para el texto */
+  }
+  .space-between {
+    display: flex;
+    justify-content: space-between;
+  }

@@ -1,0 +1,29 @@
+.disabled-row {
+    background-color: #f5f5f5; /* Gris claro */
+    color: #aaa; /* Gris más claro para el texto */
+  }
+  .space-between {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Estilo para el contenedor de información de móviles restantes */
+.mobile-info {
+  background-color: #f8f9fa;  /* Fondo gris claro */
+  padding: 10px 15px;          /* Espaciado interno */
+  border-radius: 8px;          /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+  display: flex;               /* Alineación de elementos en fila */
+  align-items: center;         /* Centrado vertical */
+  justify-content: space-between; /* Espaciado entre elementos */
+  margin-bottom: 15px;         /* Margen inferior */
+  font-size: 16px;             /* Tamaño de fuente */
+  color: #333;                 /* Color del texto */
+}
+
+/* Estilo para el texto del número de móviles restantes */
+.mobile-info p {
+  font-weight: bold;           /* Texto en negrita */
+  color: #007bff;              /* Color azul */
+  margin: 0;                   /* Elimina margen */
+}

@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>{{ data ? 'Editar Cliente' : 'Crear Cliente' }}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="clienteForm">
+    <mat-form-field appearance="fill">
+      <mat-label>IMEI</mat-label>
+      <input matInput formControlName="imei" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Sala</mat-label>
+      <mat-select formControlName="sala">
+        <mat-option *ngFor="let sala of salas" [value]="sala._id">
+          {{ sala.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-raised-button color="primary" (click)="save()">
+    Guardar
+  </button>
+</div>

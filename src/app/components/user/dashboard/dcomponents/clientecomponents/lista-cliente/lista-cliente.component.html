@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="space-between">
+      <mat-form-field appearance="fill" style="width: 200px;">
+        <mat-label>Buscar</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Buscar por IMEI o Sala">
+      </mat-form-field>
+      <button mat-fab extended color="primary" (click)="openCreateDialog()">Crear Cliente</button>
+    </div>
+  
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="imei">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> IMEI </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.imei }} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="sala">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Sala </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.sala?.name || 'N/A' }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="licencia">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Licencia </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.user?.company.licencia }} </mat-cell>
+      </ng-container>
+
+  
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-icon-button color="accent" (click)="openEditDialog(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteCliente(element._id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+        
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  
+    <mat-paginator [length]="dataSource.data.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+</div>
+
+<div style="margin-top: 20px; text-align: center;">
+  <p> <strong>Móviles:</strong> Quedan {{ remainingMobiles}} móviles </p>
+</div>
+
+  
+
+  

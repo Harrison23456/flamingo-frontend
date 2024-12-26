@@ -1,0 +1,18 @@
+<div class="mat-typography">
+    <mat-toolbar style="background-color: #009688;">
+      <!-- Opciones del menú -->
+      <span style="flex-grow: 1;">
+        <button mat-button routerLink="/dashboard-user/ClientesList">CLIENTES</button>
+        <button mat-button routerLink="/dashboard-user/SalasList">SALAS DE JUEGO</button>
+        <button mat-button routerLink="/reporteria">REPORTERÍA</button>
+      </span>
+  
+      <!-- Logout -->
+      <button mat-button (click)="onLogout()">LOGOUT</button>
+    </mat-toolbar>
+  
+    <div class="dashboard-content" style="padding: 16px;">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  
